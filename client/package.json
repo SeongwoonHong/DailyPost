@@ -7,8 +7,18 @@
   },
   "dependencies": {
     "axios": "^0.17.1",
+    "bcryptjs": "^2.4.3",
+    "materialize-css": "^0.100.2",
+    "prop-types": "^15.6.0",
     "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "react-addons-update": "^15.6.2",
+    "react-dom": "^15.4.2",
+    "react-materialize": "^1.1.0",
+    "react-redux": "^5.0.6",
+    "react-router-dom": "^4.2.2",
+    "react-timeago": "^3.4.3",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -16,5 +26,9 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:5000"
+  "proxy": {
+    "/api/*": {
+      "target": "http://localhost:5000"
+    }
+  }
 }
