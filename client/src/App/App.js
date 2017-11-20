@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import logo from './logo.svg';
 import './App.css';
 
@@ -12,13 +13,9 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('/api')
-      .then((response) => {
-        this.setState({
-          message: 'FROM SERVER11',
-          fetching: false
-        })
-      })
+    axios.post('/api/account/signup').then((response) => {
+      console.log(response);
+    });
   }
 
   render() {
@@ -26,7 +23,7 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React seong111123213!</h2>
+          <h2>haha111</h2>
         </div>
         <p className="App-intro">
           {'This is '}
