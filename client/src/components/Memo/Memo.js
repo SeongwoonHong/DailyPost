@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import TimeAgo from 'react-timeago';
 import './style.css';
+import Materialize from 'materialize-css';
+import $ from 'jquery';
 
 class Memo extends Component {
   constructor(props) {
@@ -11,16 +13,17 @@ class Memo extends Component {
       value: props.data.contents
     };
   }
-  // componentDidUpdate = () => {
-  //   $('#dropdown-button-'+this.props.data._id).dropdown({
-  //     belowOrigin: true // Displays dropdown below the button
-  //   });
-  // }
-  // componentDidMount = () => {
-  //   $('#dropdown-button-'+this.props.data._id).dropdown({
-  //     belowOrigin: true // Displays dropdown below the button
-  //   });
-  // }
+  componentDidUpdate = () => {
+    console.log($);
+    $('#dropdown-button-'+this.props.data._id).dropdown({
+      belowOrigin: true // Displays dropdown below the button
+    });
+  }
+  componentDidMount = () => {
+    $('#dropdown-button-'+this.props.data._id).dropdown({
+      belowOrigin: true // Displays dropdown below the button
+    });
+  }
   toggleEdit = () => {
     this.setState({
       editMode: !this.state.editMode

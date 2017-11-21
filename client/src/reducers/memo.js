@@ -90,7 +90,6 @@ export default function authentication(state = initialState, action) {
         }
       }
       // loading older or newer memo
-      return state;
     case types.MEMO_LIST_FAILURE:
       return {
         ...state,

@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Authentication from '../Authentication/Authentication';
 import { browserHistory } from 'react-router';
-
+import Materialize from 'materialize-css';
+import $ from 'jquery';
 class Register extends Component {
   handleRegister = (id, pw) => {
     return this.props.registerRequest(id, pw).then(() => {
       if (this.props.status === 'SUCCESS') {
-        // Materialize.toast('Success! Please log in', 2000);
+        Materialize.toast('Success! Please log in', 2000);
         browserHistory.push('/login');
       } else {
         /*
@@ -21,8 +22,7 @@ class Register extends Component {
           'Password is too short',
           'Username already exists'
         ];
-        // let $toastContent = $('<span style="color: #FFB4BA">' + errorMessage[this.props.errorCode - 1] + '</span>');
-        // Materialize.toast($toastContent, 2000);
+        Materialize.toast('<span style="color: #FFB4BA">' + errorMessage[this.props.errorCode - 1] + '</span>', 2000);
         return false;
       }
     })

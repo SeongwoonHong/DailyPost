@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Header from '../Header';
+import Materialize from 'materialize-css';
+import $ from 'jquery';
 
 class App extends Component {
   componentDidMount = () => {
@@ -29,14 +31,13 @@ class App extends Component {
           username: ''
         };
         document.cookie = 'key=' + btoa(JSON.stringify(loginData));
-        // let $toastContent = $('<span style="color: #FFB4BA">Your session is expired, please log in again</span>');
-        // Materialize.toast($toastContent, 4000);
+        Materialize.toast('<span style="color: #FFB4BA">Your session is expired, please log in again</span>', 4000);
       }
     });
   }
   handleLogout = () => {
     this.props.logoutRequest().then(() => {
-      // Materialize.toast('Good Bye!', 2000);
+      Materialize.toast('Good Bye!', 2000);
 
       // empties the session
       let loginData = {

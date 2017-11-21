@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 // import Materialize from 'materialize-css';
 import Authentication from '../Authentication/Authentication';
 import { browserHistory } from 'react-router';
+import Materialize from 'materialize-css';
+// import $ from 'jquery';
 
 class Login extends Component {
   constructor(props) {
@@ -19,13 +21,13 @@ class Login extends Component {
           };
 
           document.cookie = 'key=' + btoa(JSON.stringify(loginData));
-          // Materialize.toast('Welcome, ' + id + '!', 2000);
+
+          Materialize.toast('Welcome, ' + id + '!', 2000);
           // browserHistory.push('/');
           window.location = '/';
           return true;
         } else {
-          // let $toastContent = $('<span style="color: #FFB4BA">Incorrect username or password</span>');
-          // Materialize.toast($toastContent, 2000);
+          Materialize.toast('<span style="color: #FFB4BA">Incorrect username or password</span>', 2000);
           return false;
         }
       })

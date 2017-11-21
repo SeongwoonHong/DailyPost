@@ -1,8 +1,11 @@
+/* eslint-disable */
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import Write from '../Write/Write';
+import App from '../App';
 import MemoList from '../MemoList/MemoList';
 import './style.css';
+import Materialize from 'materialize-css';
+import $ from 'jquery';
 
 class Home extends Component {
   constructor(props) {
@@ -13,13 +16,13 @@ class Home extends Component {
   }
   componentDidMount = () => {
     const loadUntilScrollable = () => {
-      // if ($('body').height() < $(window).height()) {
-      //   this.loadOldMemo().then(() => {
-      //     if (!this.props.isLast) {
-      //       loadUntilScrollable();
-      //     }
-      //   })
-      // }
+      if ($('body').height() < $(window).height()) {
+        this.loadOldMemo().then(() => {
+          if (!this.props.isLast) {
+            loadUntilScrollable();
+          }
+        })
+      }
     }
     const loadMemoLoop = () => {
       this.loadNewMemo().then(() => {
@@ -30,23 +33,23 @@ class Home extends Component {
       loadUntilScrollable();
       loadMemoLoop();
     })
-    // $(window).scroll(() => {
-    //   // WHEN HEIGHT UNDER SCROLLBOTTOM IS LESS THEN 250
-    //   if ($(document).height() - $(window).height() - $(window).scrollTop() < 250) {
-    //       if (!this.state.loadingState) {
-    //         this.loadOldMemo();
-    //         this.setState({
-    //           loadingState: true
-    //         });
-    //       } else {
-    //         if (this.state.loadingState) {
-    //           this.setState({
-    //             loadingState: false
-    //           })
-    //         }
-    //       }
-    //   }
-    // });
+    $(window).scroll(() => {
+      // WHEN HEIGHT UNDER SCROLLBOTTOM IS LESS THEN 250
+      if ($(document).height() - $(window).height() - $(window).scrollTop() < 250) {
+          if (!this.state.loadingState) {
+            this.loadOldMemo();
+            this.setState({
+              loadingState: true
+            });
+          } else {
+            if (this.state.loadingState) {
+              this.setState({
+                loadingState: false
+              })
+            }
+          }
+      }
+    });
   }
   componentWillUnmount = () => {
     clearTimeout(this.memoLoaderTimeoutId);
@@ -74,7 +77,7 @@ class Home extends Component {
     let lastId = this.props.memoData[this.props.memoData.length - 1]._id;
     return this.props.memoListRequest(false, 'old', lastId).then(() => {
       if (this.props.isLast) {
-        // Materialize.toast('You are reading the last page', 2000);
+        Materialize.toast('You are reading the last page', 2000);
       }
     });
   }
@@ -101,8 +104,7 @@ class Home extends Component {
             ];
             let error = this.props.editStatus.error;
             // NOTIFY ERROR
-            // let $toastContent = $('<span style="color: #FFB4BA">' + errorMessage[error - 1] + '</span>');
-            // Materialize.toast($toastContent, 2000);
+            Materialize.toast('<span style="color: #FFB4BA">' + errorMessage[error - 1] + '</span>', 2000);
             // IF NOT LOGGED IN, REFRESH THE PAGE AFTER 2 SECONDS
             if(error === 3) {
               setTimeout(()=> {location.reload(false)}, 2000);
@@ -115,7 +117,7 @@ class Home extends Component {
     return this.props.memoPostRequest(contents).then(() => {
       if (this.props.postStatus === 'SUCCESS') {
         this.loadNewMemo().then(() => {
-          // Materialize.toast('Success!', 2000);
+          Materialize.toast('Success!', 2000);
         });
       } else {
         /*
@@ -127,16 +129,14 @@ class Home extends Component {
         switch (this.props.postStatus.error) {
           case 1:
             // $toastContent = $('<span style="color: #FFB4BA">You are not logged in</span>');
-            // Materialize.toast($toastContent, 2000);
-            // setTimeout(()=> {location.reload(false);}, 2000);
+            Materialize.toast($toastContent, 2000);
+            setTimeout(()=> {location.reload(false);}, 2000);
             break;
           case 2:
-            // $toastContent = $('<span style="color: #FFB4BA">Please write something</span>');
-            // Materialize.toast($toastContent, 2000);
+            Materialize.toast('<span style="color: #FFB4BA">Please write something</span>', 2000);
             break;
           default:
-            // $toastContent = $('<span style="color: #FFB4BA">Something Broke</span>');
-            // Materialize.toast($toastContent, 2000);
+            Materialize.toast('<span style="color: #FFB4BA">Something Broke</span>', 2000);
             break;
         }
       }
@@ -147,11 +147,11 @@ class Home extends Component {
       if(this.props.removeStatus.status==="SUCCESS") {
         // LOAD MORE MEMO IF THERE IS NO SCROLLBAR
         // 1 SECOND LATER. (ANIMATION TAKES 1SEC)
-        // setTimeout(() => {
-        //   if($("body").height() < $(window).height()) {
-        //       this.loadOldMemo();
-        //   }
-        // }, 1000);
+        setTimeout(() => {
+          if($("body").height() < $(window).height()) {
+              this.loadOldMemo();
+          }
+        }, 1000);
       } else {
         // ERROR
         /*
@@ -169,8 +169,7 @@ class Home extends Component {
             'You do not have permission'
         ];
          // NOTIFY ERROR
-        // let $toastContent = $('<span style="color: #FFB4BA">' + errorMessage[this.props.removeStatus.error - 1] + '</span>');
-        // Materialize.toast($toastContent, 2000);
+        Materialize.toast('<span style="color: #FFB4BA">' + errorMessage[this.props.removeStatus.error - 1] + '</span>', 2000);
 
 
         // IF NOT LOGGED IN, REFRESH THE PAGE
@@ -197,8 +196,7 @@ class Home extends Component {
               'That memo does not exist'
           ];
           // NOTIFY ERROR
-          // let $toastContent = $('<span style="color: #FFB4BA">' + errorMessage[this.props.starStatus.error - 1] + '</span>');
-          // Materialize.toast($toastContent, 2000);
+          Materialize.toast('<span style="color: #FFB4BA">' + errorMessage[this.props.starStatus.error - 1] + '</span>', 2000);
           // IF NOT LOGGED IN, REFRESH THE PAGE
           if(this.props.starStatus.error === 2) {
               setTimeout(()=> {location.reload(false)}, 2000);
@@ -210,6 +208,7 @@ class Home extends Component {
   render() {
     return (
       <div className="wrapper">
+        <App />
         { this.props.isLoggedIn ? <Write onPost={this.handlePost} /> : undefined }
         <MemoList
           data={this.props.memoData}
@@ -222,11 +221,5 @@ class Home extends Component {
     );
   }
 }
-Home.defaultProps = {
 
-};
-
-Home.propTypes = {
-
-};
 export default Home;
