@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Authentication from '../Authentication/Authentication';
 import { browserHistory } from 'react-router';
 import Materialize from 'materialize-css';
-// import $ from 'jquery';
+import $ from 'jquery';
 
 class Login extends Component {
   constructor(props) {
