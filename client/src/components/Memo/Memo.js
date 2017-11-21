@@ -13,17 +13,17 @@ class Memo extends Component {
       value: props.data.contents
     };
   }
-  componentDidUpdate = () => {
-    console.log($);
-    $('#dropdown-button-'+this.props.data._id).dropdown({
-      belowOrigin: true // Displays dropdown below the button
-    });
-  }
-  componentDidMount = () => {
-    $('#dropdown-button-'+this.props.data._id).dropdown({
-      belowOrigin: true // Displays dropdown below the button
-    });
-  }
+  // componentDidUpdate = () => {
+  //   console.log($);
+  //   $('#dropdown-button-'+this.props.data._id).dropdown({
+  //     belowOrigin: true // Displays dropdown below the button
+  //   });
+  // }
+  // componentDidMount = () => {
+  //   $('#dropdown-button-'+this.props.data._id).dropdown({
+  //     belowOrigin: true // Displays dropdown below the button
+  //   });
+  // }
   toggleEdit = () => {
     this.setState({
       editMode: !this.state.editMode

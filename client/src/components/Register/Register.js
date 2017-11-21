@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Authentication from '../Authentication/Authentication';
-import { browserHistory } from 'react-router';
+// import { browserHistory } from 'react-router-dom';
 import Materialize from 'materialize-css';
 import $ from 'jquery';
 class Register extends Component {
@@ -9,7 +9,7 @@ class Register extends Component {
     return this.props.registerRequest(id, pw).then(() => {
       if (this.props.status === 'SUCCESS') {
         Materialize.toast('Success! Please log in', 2000);
-        browserHistory.push('/login');
+        // browserHistory.push('/login');
       } else {
         /*
           ERROR CODES:
