@@ -8,7 +8,8 @@ const router = express.Router();
     BODY SAMPLE: { contents: "sample "}
     ERROR CODES
         1: NOT LOGGED IN
-        2: EMPTY CONTENTS
+        2: SOMETHING WRONG
+        3: EMPTY CONTENTS
 */
 // WRITE MEMO
 router.post('/', (req, res) => {
@@ -21,11 +22,17 @@ router.post('/', (req, res) => {
 
   if (typeof req.body.contents !== 'string') {
     return res.status(400).json({
-      error: 'EMPTY CONTENTS',
+      error: 'SOMETHING WRONG WITH CONTENTS',
       code: 2
     });
   }
 
+  if (req.body.contents.trim() === '') {
+    return res.status(400).json({
+      error: 'EMPTY CONTENTS',
+      code: 3
+    })
+  }
   let memo = new Memo({
     writer: req.session.loginInfo.username,
     contents: req.body.contents

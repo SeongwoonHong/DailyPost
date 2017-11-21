@@ -82,7 +82,7 @@ class Authentication extends Component {
         <div className="card-content">
           <div className="row">
             {inputBoxes}
-            <a className="waves-effect waves-light btn" onClick={this.handleLogin}>SUBMIT</a>
+            <a className="waves-light btn" onClick={this.handleLogin}>SUBMIT</a>
           </div>
         </div>
         <div className="footer">
@@ -100,7 +100,7 @@ class Authentication extends Component {
         <div className="row">
           {inputBoxes}
           <a
-            className="waves-effect waves-light btn"
+            className="waves-light btn"
             onClick={this.handleRegister}
           >
             CREATE
@@ -110,10 +110,9 @@ class Authentication extends Component {
     );
     return (
       <div className="container auth">
-        <Link className="logo" to="/">MEMOPAD</Link>
         <div className="card">
           <div className="header blue white-text center">
-            <div className="card-content">{this.props.mode ? "LOGIN" : "REGISTER"}</div>
+            <div className="card-content teal">{this.props.mode ? "LOGIN" : "REGISTER"}</div>
           </div>
           {this.props.mode ? loginView : registerView }
         </div>

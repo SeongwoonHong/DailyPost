@@ -115,7 +115,7 @@ class Home extends Component {
     }
   handlePost = (contents) => {
     return this.props.memoPostRequest(contents).then(() => {
-      if (this.props.postStatus === 'SUCCESS') {
+      if (this.props.postStatus.status === 'SUCCESS') {
         this.loadNewMemo().then(() => {
           Materialize.toast('Success!', 2000);
         });
@@ -123,7 +123,8 @@ class Home extends Component {
         /*
           ERROR CODES
             1: NOT LOGGED IN
-            2: EMPTY CONTENTS
+            2: SOMETHING WRONG WITH THE CONTENTS
+            3: EMPTY CONTENTS
         */
         // let $toastContent;
         switch (this.props.postStatus.error) {
@@ -134,6 +135,9 @@ class Home extends Component {
             break;
           case 2:
             Materialize.toast('<span style="color: #FFB4BA">Please write something</span>', 2000);
+            break;
+          case 3:
+            Materialize.toast('<span style="color: #FFB4BA">Content is required</span>', 2000);
             break;
           default:
             Materialize.toast('<span style="color: #FFB4BA">Something Broke</span>', 2000);
@@ -208,7 +212,7 @@ class Home extends Component {
   render() {
     return (
       <div className="wrapper">
-        <App />
+        {/* <App /> */}
         { this.props.isLoggedIn ? <Write onPost={this.handlePost} /> : undefined }
         <MemoList
           data={this.props.memoData}

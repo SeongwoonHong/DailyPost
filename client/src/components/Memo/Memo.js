@@ -40,9 +40,11 @@ class Memo extends Component {
     this.props.onRemove(id, index);
   }
   handleStar = () => {
-    let id = this.props.data._id;
-    let index = this.props.index;
-    this.props.onStar(id, index);
+    if (!this.props.ownership) {
+      let id = this.props.data._id;
+      let index = this.props.index;
+      this.props.onStar(id, index);
+    }
   }
   toggleEdit = () => {
     if (this.state.editMode) {

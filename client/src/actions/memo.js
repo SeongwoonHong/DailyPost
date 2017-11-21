@@ -45,15 +45,14 @@ export function memoListRequest(isInitial, listType, id, username) {
   return (dispatch) => {
 
     dispatch(memoList());
-    let url = '/api/memo';
+    let url = '/api/memo/';
     if (typeof username === 'undefined') {
       // username not given, load public memo
-      url = isInitial ? url : `${url}/${listType}/${id}`;
+      url = isInitial ? url : `${url}${listType}/${id}`;
     } else {
       // load memos of specific user
     }
     return axios.get(url).then((response) => {
-      console.log(url);
       dispatch(memoListSuccess(response.data, isInitial, listType));
     }, (err) => {
       dispatch(memoListFailure());
@@ -151,7 +150,7 @@ export function memoRemoveFailure(error) {
 /* MEMO TOGGLE STAR */
 export function memoStarRequest(id, index) {
   return (dispatch) => {
-    return axios.post('/api/memo/star' + id).then((response) => {
+    return axios.post('/api/memo/star/' + id).then((response) => {
       dispatch(memoStarSuccess(index, response.data.memo));
     }, (error) => {
       dispatch(memoStarFailure(error.response.data.code));
