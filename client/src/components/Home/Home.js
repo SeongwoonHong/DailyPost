@@ -6,6 +6,7 @@ import MemoList from '../MemoList/MemoList';
 import './style.css';
 import Materialize from 'materialize-css';
 import $ from 'jquery';
+import TransitionGroup from 'react-transition-group-plus';
 
 class Home extends Component {
   constructor(props) {
@@ -212,8 +213,9 @@ class Home extends Component {
   render() {
     return (
       <div className="wrapper">
-        {/* <App /> */}
-        { this.props.isLoggedIn ? <Write onPost={this.handlePost} /> : undefined }
+        <TransitionGroup>
+          { this.props.isLoggedIn ? <Write onPost={this.handlePost} /> : undefined }
+        </TransitionGroup>
         <MemoList
           data={this.props.memoData}
           currentUser={this.props.currentUser}

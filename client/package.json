@@ -6,6 +6,7 @@
   "dependencies": {
     "axios": "^0.17.1",
     "bcryptjs": "^2.4.3",
+    "gsap-promise": "^2.0.0",
     "materialize-css": "^0.100.2",
     "prop-types": "^15.6.0",
     "react": "^15.4.2",
@@ -16,12 +17,17 @@
     "react-router-dom": "^4.2.2",
     "react-scripts": "^1.0.17",
     "react-timeago": "^3.4.3",
+    "react-transition-group-plus": "^0.5.2",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build-css": "node-sass-chokidar src/ -o src/",
+    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
+    "start-js": "react-scripts start",
+    "start": "npm-run-all -p watch-css start-js",
+    "build-js": "react-scripts build",
+    "build": "npm-run-all build-css build-js",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },

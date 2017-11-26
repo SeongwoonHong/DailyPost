@@ -1,0 +1,12 @@
+.Header {
+  .header {
+    &:hover {
+      animation: textHover ease-out 1s 1 forwards;
+    }
+  }
+  @keyframes textHover {
+    to {
+      color: #333;
+    }
+  }
+}

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import animate from 'gsap-promise';
+import classnames from 'classnames';
+import Button from '../Button/Button';
 import './style.css';
 
 class Authentication extends Component {
@@ -10,6 +13,19 @@ class Authentication extends Component {
       username: '',
       password: ''
     };
+  }
+  componentDidMount = () => {
+    animate.set(this.component, { autoAlpha: 0, y: '-50px' });
+    this.animateIn();
+  }
+  animateIn = () => {
+    return animate.to(this.component, 1, { autoAlpha: 1, y: '0px' });
+  }
+  componentWillEnter = (done) => {
+    this.animateIn().then(done);
+  }
+  componentWillAppear = (done) => {
+    this.animateIn().then(done);
   }
   handleLogin = () => {
     let id = this.state.username;
@@ -54,6 +70,7 @@ class Authentication extends Component {
     const inputBoxes = (
         <div>
           <div className="input-field col s12 username">
+            <i className={classnames('material-icons prefix')}>account_circle</i>
             <label htmlFor="username">Username</label>
             <input
               name="username"
@@ -64,6 +81,7 @@ class Authentication extends Component {
               className="validate"/>
           </div>
           <div className="input-field col s12">
+            <i className={classnames('material-icons prefix')}>lock</i>
               <label htmlFor="password">Password</label>
               <input
                 name="password"
@@ -82,13 +100,19 @@ class Authentication extends Component {
         <div className="card-content">
           <div className="row">
             {inputBoxes}
-            <a className="waves-light btn" onClick={this.handleLogin}>SUBMIT</a>
+            <Button
+              className="waves-light btn"
+              onClick={this.handleLogin}
+              animateAtDidMount
+              text="SUBMIT"
+              isLink={false}
+            />
           </div>
         </div>
         <div className="footer">
           <div className="card-content">
             <div className="right" >
-              New Here? <Link to="/register">Create an account</Link>
+              New Here? <Link to="/register" className="create-account">Create an account</Link>
             </div>
           </div>
         </div>
@@ -99,20 +123,25 @@ class Authentication extends Component {
       <div className="card-content">
         <div className="row">
           {inputBoxes}
-          <a
+          <Button
             className="waves-light btn"
             onClick={this.handleRegister}
-          >
-            CREATE
-          </a>
+            text="CREATE"
+            animateAtDidMount
+            isLink={false}
+          />
         </div>
       </div>
     );
     return (
-      <div className="container auth">
+      <div className="container auth" ref={el => this.component = el}>
         <div className="card">
           <div className="header blue white-text center">
-            <div className="card-content teal">{this.props.mode ? "LOGIN" : "REGISTER"}</div>
+            <div className="card-content teal">
+              {
+                this.props.mode ? "LOGIN" : "REGISTER"
+              }
+            </div>
           </div>
           {this.props.mode ? loginView : registerView }
         </div>

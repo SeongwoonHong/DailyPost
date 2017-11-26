@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import animate from 'gsap-promise';
+import Button from '../Button/Button';
 import './style.css';
 
 class Write extends Component {
@@ -8,6 +10,18 @@ class Write extends Component {
     this.state = {
       contents: ''
     };
+  }
+  componentDidMount = () => {
+    animate.set(this.component, { autoAlpha: 0, y: '-50px' });
+  }
+  componentWillEnter = (done) => {
+    this.animateIn().then(done);
+  }
+  componentWillAppear = (done) => {
+    this.animateIn().then(done);
+  }
+  animateIn = () => {
+    return animate.to(this.component, 0.6, { autoAlpha: 1, y: '0px' });
   }
   handleChange = (e) => {
     this.setState({
@@ -24,7 +38,7 @@ class Write extends Component {
   }
   render() {
     return (
-      <div className="container write">
+      <div className="container write" ref={el => this.component = el}>
         <div className="card">
           <div className="card-content">
             <textarea
@@ -34,7 +48,12 @@ class Write extends Component {
               placeholder="Write down your memo"></textarea>
           </div>
           <div className="card-action">
-            <a onClick={this.handlePost}>POST</a>
+            <Button
+              onClick={this.handlePost}
+              text="POST"
+              className="btn waves-light"
+              animateAtDidMount
+            />
           </div>
         </div>
       </div>

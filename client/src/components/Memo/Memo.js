@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import animate from 'gsap-promise';
 import TimeAgo from 'react-timeago';
+import classnames from 'classnames';
 import './style.css';
 import Materialize from 'materialize-css';
 import $ from 'jquery';
@@ -12,6 +14,9 @@ class Memo extends Component {
       editMode: false,
       value: props.data.contents
     };
+  }
+  componentDidMount = () => {
+    animate.set(this.component, { autoAlpha: 0, y: '-50px' });
   }
   // componentDidUpdate = () => {
   //   console.log($);
@@ -62,8 +67,17 @@ class Memo extends Component {
       })
     }
   }
+  animateIn = () => {
+    return animate.to(this.component, 0.5, { autoAlpha: 1, y: '0px', delay: this.props.animationDelay });
+  }
+  componentWillEnter = (done) => {
+    this.animateIn().then(done);
+  }
+  componentWillAppear = (done) => {
+    this.animateIn().then(done);
+  }
   render() {
-    let starStyle = (this.props.data.starred.indexOf(this.props.currentUser) > -1) ? { color: '#ff9980' } : {} ;
+    // let starStyle = (this.props.data.starred.indexOf(this.props.currentUser) > -1) ? { color: '#ff9980' } : {} ;
     const { data, ownership } = this.props;
     let editedInfo = (
       <span style={{color: '#AAB5BC'}}> · Edited <TimeAgo date={this.props.data.date.edited} live={true}/></span>
@@ -109,8 +123,8 @@ class Memo extends Component {
         </div>
         <div className="footer">
           <i
-            className="material-icons log-footer-icon star icon-button"
-            style={starStyle}
+            className={classnames('material-icons log-footer-icon star icon-button', { starred: this.props.data.starred.indexOf(this.props.currentUser) > -1 })}
+            // style={starStyle}
             onClick={this.handleStar}
           >
             star
@@ -120,7 +134,7 @@ class Memo extends Component {
       </div>
     );
     return(
-      <div className="container memo">
+      <div className="container memo" ref={el => this.component = el}>
        { this.state.editMode ? editView : memoView }
      </div>
     );
