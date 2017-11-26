@@ -203,9 +203,9 @@ class Home extends Component {
           // NOTIFY ERROR
           Materialize.toast('<span style="color: #FFB4BA">' + errorMessage[this.props.starStatus.error - 1] + '</span>', 2000);
           // IF NOT LOGGED IN, REFRESH THE PAGE
-          if(this.props.starStatus.error === 2) {
-              setTimeout(()=> {location.reload(false)}, 2000);
-          }
+          // if(this.props.starStatus.error === 2) {
+          //     setTimeout(()=> {location.reload(false)}, 2000);
+          // }
         }
       }
     );
