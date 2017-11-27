@@ -1,0 +1,64 @@
+.memo-list {
+  @-webkit-keyframes memo-enter {
+    0% {
+      opacity: 0;
+      // max-height: 0%;
+    }
+    100% {
+      opacity: 1;
+      // max-height: 1080px;
+    }
+  }
+  @keyframes memo-enter {
+    0% {
+      opacity: 0;
+      transform: translateX(-20%);
+      // max-height: 0px;
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0%);
+      // max-height: 1080px;
+    }
+  }
+  .memo-enter {
+    -webkit-animation: memo-enter 2s;
+    animation: memo-enter 2s;
+  }
+  @-webkit-keyframes memo-leave {
+    0% {
+    opacity: 1;
+    max-height: 1080px;
+    }
+    50% {
+    opacity: 0;
+     -webkit-transform: translateX(100px);
+    }
+    100% {
+      max-height: 0px;
+    }
+  }
+
+  @keyframes memo-leave {
+    0% {
+    opacity: 1;
+    max-height: 1080px;
+    }
+    50% {
+    opacity: 0;
+    transform: translateX(100px);
+    }
+    100% {
+      max-height: 0px;
+    }
+  }
+
+  .memo-leave {
+    max-height: 0px;
+    opacity: 0;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-name: memo-leave;
+    animation-name: memo-leave;
+  }
+}

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 // import Materialize from 'materialize-css';
 import Authentication from '../Authentication/Authentication';
-import { browserHistory } from 'react-router';
+import { withRouter } from 'react-router-dom';
 import Materialize from 'materialize-css';
 import $ from 'jquery';
 
@@ -23,8 +23,7 @@ class Login extends Component {
           document.cookie = 'key=' + btoa(JSON.stringify(loginData));
 
           Materialize.toast('Welcome, ' + id + '!', 2000);
-          // browserHistory.push('/');
-          window.location = '/';
+          this.props.history.push('/');
           return true;
         } else {
           Materialize.toast('<span style="color: #FFB4BA">Incorrect username or password</span>', 2000);
@@ -51,4 +50,4 @@ Login.defaultProps = {
 Login.propTypes = {
 
 };
-export default Login;
+export default withRouter(Login);

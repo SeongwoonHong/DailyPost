@@ -21,7 +21,8 @@ export const login = () => {
 
 export const loginSuccess = (username) => {
   return {
-    type: types.AUTH_LOGIN_SUCCESS
+    type: types.AUTH_LOGIN_SUCCESS,
+    username
   }
 }
 

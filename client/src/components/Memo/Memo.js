@@ -1,3 +1,4 @@
+import 'materialize-css/dist/css/materialize.min.css';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import animate from 'gsap-promise';
@@ -5,6 +6,7 @@ import TimeAgo from 'react-timeago';
 import classnames from 'classnames';
 import './style.css';
 import Materialize from 'materialize-css';
+import Button from '../Button/Button';
 import $ from 'jquery';
 
 class Memo extends Component {
@@ -12,23 +14,53 @@ class Memo extends Component {
     super(props);
     this.state = {
       editMode: false,
+      isDropdownOpend: false,
       value: props.data.contents
     };
   }
-  componentDidMount = () => {
-    animate.set(this.component, { autoAlpha: 0, y: '-50px' });
+  shouldComponentUpdate(nextProps, nextState) {
+    let current = {
+        props: this.props,
+        state: this.state
+    };
+
+    let next = {
+        props: nextProps,
+        state: nextState
+    };
+
+    let update = JSON.stringify(current) !== JSON.stringify(next);
+    return update;
   }
+  // componentDidMount = () => {
+  //   animate.set(this.component, { autoAlpha: 0, y: '-50px' });
+  // }
   // componentDidUpdate = () => {
+  //   console.log('updated');
+  //   console.log(document.getElementById(`dropdown-button-${this.props.data._id}`));
+  //   // $('#dropdown-button-'+this.props.data._id).dropdown({
+  //   //   belowOrigin: true // Displays dropdown below the button
+  //   // });
+  // }
+  // componentDidMount = () => {
   //   console.log($);
   //   $('#dropdown-button-'+this.props.data._id).dropdown({
   //     belowOrigin: true // Displays dropdown below the button
   //   });
   // }
-  // componentDidMount = () => {
-  //   $('#dropdown-button-'+this.props.data._id).dropdown({
-  //     belowOrigin: true // Displays dropdown below the button
-  //   });
-  // }
+  toggleDropdown = () => {
+    if (!this.state.isDropdownOpend) {
+      document.addEventListener('click', this.handleOutsideClick, false);
+    } else {
+      document.removeEventListener('click', this.handleOutsideClick, false);
+    }
+    this.setState({
+      isDropdownOpend: !this.state.isDropdownOpend
+    });
+  }
+  handleOutsideClick = (e) => {
+    this.toggleDropdown();
+  }
   toggleEdit = () => {
     this.setState({
       editMode: !this.state.editMode
@@ -45,10 +77,12 @@ class Memo extends Component {
     this.props.onRemove(id, index);
   }
   handleStar = () => {
-    if (!this.props.ownership) {
-      let id = this.props.data._id;
-      let index = this.props.index;
-      this.props.onStar(id, index);
+    if (this.props.currentUser) {
+      if (!this.props.ownership) {
+        let id = this.props.data._id;
+        let index = this.props.index;
+        this.props.onStar(id, index);
+      }
     }
   }
   toggleEdit = () => {
@@ -58,7 +92,8 @@ class Memo extends Component {
       let contents = this.state.value;
       this.props.onEdit(id, index, contents).then(() => {
         this.setState({
-          editMode: !this.state.editMode
+          editMode: !this.state.editMode,
+          isDropdownOpend: false
         });
       });
     } else {
@@ -70,11 +105,17 @@ class Memo extends Component {
   animateIn = () => {
     return animate.to(this.component, 0.5, { autoAlpha: 1, y: '0px', delay: this.props.animationDelay });
   }
+  animateOut = () => {
+    return animate.to(this.component, 0.5 ,{ autoAlpha: 0, y: '-50px' });
+  }
   componentWillEnter = (done) => {
     this.animateIn().then(done);
   }
   componentWillAppear = (done) => {
     this.animateIn().then(done);
+  }
+  componentWillLeave = (done) => {
+    this.animateOut().then(done);
   }
   render() {
     // let starStyle = (this.props.data.starred.indexOf(this.props.currentUser) > -1) ? { color: '#ff9980' } : {} ;
@@ -85,11 +126,11 @@ class Memo extends Component {
     const dropDownMenu = (
       <div className="option-button">
         <a className='dropdown-button'
-           id={`dropdown-button-${data._id}`}
-           data-activates={`dropdown-${data._id}`}>
+           onClick={this.toggleDropdown}
+        >
           <i className="material-icons icon-button">more_vert</i>
         </a>
-        <ul id={`dropdown-${data._id}`} className='dropdown-content'>
+        <ul className={classnames('dropdown-content', { isDropdownOpend: this.state.isDropdownOpend })}>
           <li><a onClick={this.toggleEdit}>Edit</a></li>
           <li><a onClick={this.handleRemove}>Remove</a></li>
         </ul>
@@ -106,7 +147,12 @@ class Memo extends Component {
             ></textarea>
           </div>
           <div className="card-action">
-            <a onClick={this.toggleEdit}>OK</a>
+            <Button
+              onClick={this.toggleEdit}
+              text="OK"
+              className="waves-light btn"
+              animateAtDidMount
+            />
           </div>
         </div>
       </div>

@@ -48,6 +48,7 @@ class Write extends Component {
               placeholder="Write down your memo"></textarea>
           </div>
           <div className="card-action">
+            <span style={{'float': 'left'}}>User Name: <span className="current-user">{ this.props.currentUser }</span></span>
             <Button
               onClick={this.handlePost}
               text="POST"

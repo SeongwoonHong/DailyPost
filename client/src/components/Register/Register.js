@@ -30,7 +30,9 @@ class Register extends Component {
       }
     })
   }
-
+  cancelHandler = () => {
+    this.props.history.goBack();
+  }
   render() {
     return (
       <div>
@@ -38,6 +40,7 @@ class Register extends Component {
           <Authentication
             mode={false}
             onRegister={this.handleRegister}
+            cancelHandler={this.cancelHandler}
           />
         </TransitionGroup>
       </div>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import animate from 'gsap-promise';
 import classnames from 'classnames';
 import Button from '../Button/Button';
@@ -65,6 +65,9 @@ class Authentication extends Component {
     this.setState({
       [e.target.name]: e.target.value
     });
+  }
+  cancelHandler = () => {
+    this.props.cancelHandler();
   }
   render() {
     const inputBoxes = (
@@ -138,6 +141,14 @@ class Authentication extends Component {
         <div className="card">
           <div className="header blue white-text center">
             <div className="card-content teal">
+              {
+                !this.props.mode && <i
+                  className="material-icons prefix right register-close"
+                  onKeyDown={() => {}}
+                  onClick={this.cancelHandler}>
+                  cancel
+                </i>
+              }
               {
                 this.props.mode ? "LOGIN" : "REGISTER"
               }

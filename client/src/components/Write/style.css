@@ -1,14 +1,7 @@
-.write .materialize-textarea {
-    padding: 0px;
-    padding-bottom: 36px;
-    margin-bottom: 0px;
-    font-size: 18px;
-}
+.write .current-user {
+  font-weight: bold; }
 
-.write .card-content {
-    padding-bottom: 10px;
-}
-
-.write .card-action {
-    text-align: right;
-}
+.write .card .card-action {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }

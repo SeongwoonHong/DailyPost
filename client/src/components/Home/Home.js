@@ -35,8 +35,8 @@ class Home extends Component {
       loadMemoLoop();
     })
     $(window).scroll(() => {
-      // WHEN HEIGHT UNDER SCROLLBOTTOM IS LESS THEN 250
-      if ($(document).height() - $(window).height() - $(window).scrollTop() < 250) {
+      // WHEN HEIGHT UNDER SCROLLBOTTOM IS LESS THEN 350
+      if ($(document).height() - $(window).height() - $(window).scrollTop() < 350) {
           if (!this.state.loadingState) {
             this.loadOldMemo();
             this.setState({
@@ -118,7 +118,7 @@ class Home extends Component {
     return this.props.memoPostRequest(contents).then(() => {
       if (this.props.postStatus.status === 'SUCCESS') {
         this.loadNewMemo().then(() => {
-          Materialize.toast('Success!', 2000);
+          Materialize.toast('<span style="color: teal">SUCCESS!</span>', 4000, 'rounded');
         });
       } else {
         /*
@@ -135,13 +135,13 @@ class Home extends Component {
             setTimeout(()=> {location.reload(false);}, 2000);
             break;
           case 2:
-            Materialize.toast('<span style="color: #FFB4BA">Please write something</span>', 2000);
+            Materialize.toast('<span style="color: #FFB4BA">Please write something</span>', 4000, 'rounded');
             break;
           case 3:
-            Materialize.toast('<span style="color: #FFB4BA">Content is required</span>', 2000);
+            Materialize.toast('<span style="color: #FFB4BA">Content is required</span>', 4000, 'rounded');
             break;
           default:
-            Materialize.toast('<span style="color: #FFB4BA">Something Broke</span>', 2000);
+            Materialize.toast('<span style="color: #FFB4BA">Something Broke</span>', 4000, 'rounded');
             break;
         }
       }
@@ -214,7 +214,7 @@ class Home extends Component {
     return (
       <div className="wrapper">
         <TransitionGroup>
-          { this.props.isLoggedIn ? <Write onPost={this.handlePost} /> : undefined }
+          { this.props.isLoggedIn ? <Write onPost={this.handlePost} currentUser={this.props.currentUser} /> : undefined }
         </TransitionGroup>
         <MemoList
           data={this.props.memoData}

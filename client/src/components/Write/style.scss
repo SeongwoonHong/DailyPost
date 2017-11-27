@@ -1,0 +1,12 @@
+.write {
+  .current-user {
+    font-weight: bold;
+  }
+  .card {
+    .card-action {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+}

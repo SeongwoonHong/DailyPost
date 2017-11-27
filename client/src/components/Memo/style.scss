@@ -59,6 +59,10 @@
       animation: BounceStar ease-out 0.5s infinite alternate;
     }
   }
+  .isDropdownOpend {
+    display: block;
+    opacity: 1;
+  }
   @keyframes starred {
     to {color: #ff9980};
   }

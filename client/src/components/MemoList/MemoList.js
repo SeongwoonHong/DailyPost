@@ -1,13 +1,22 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import TransitionGroup from 'react-transition-group-plus';
+// import TransitionGroup from 'react-transition-group-plus';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import Memo from '../Memo/Memo';
-
+import './style.css';
 class MemoList extends Component {
+  shouldComponentUpdate(nextProps, nextState) {
+    let update = JSON.stringify(this.props) !== JSON.stringify(nextProps);
+    return update;
+  }
   render() {
     return (
-      <div>
-        <TransitionGroup>
+      <div className="memo-list">
+        <ReactCSSTransitionGroup
+          transitionName="memo"
+          transitionEnterTimeout={2000}
+          transitionLeaveTimeout={1000}
+        >
           {
             this.props.data.map((memo, i) => {
               return (<Memo
@@ -23,7 +32,8 @@ class MemoList extends Component {
               />);
             })
           }
-        </TransitionGroup>
+        </ReactCSSTransitionGroup>
+
       </div>
     );
   }

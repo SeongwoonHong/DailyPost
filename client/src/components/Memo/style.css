@@ -53,6 +53,10 @@
     color: #ff9980;
     animation: BounceStar ease-out 0.5s infinite alternate; }
 
+.memo .isDropdownOpend {
+  display: block;
+  opacity: 1; }
+
 @keyframes starred {
   to {
     color: #ff9980; } }
