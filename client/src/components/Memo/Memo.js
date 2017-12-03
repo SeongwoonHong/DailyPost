@@ -121,7 +121,7 @@ class Memo extends Component {
     // let starStyle = (this.props.data.starred.indexOf(this.props.currentUser) > -1) ? { color: '#ff9980' } : {} ;
     const { data, ownership } = this.props;
     let editedInfo = (
-      <span style={{color: '#AAB5BC'}}> · Edited <TimeAgo date={this.props.data.date.edited} live={true}/></span>
+      <span className="edit-date" style={{color: '#AAB5BC'}}> (Edited <TimeAgo date={this.props.data.date.edited} live={true}/>)</span>
     );
     const dropDownMenu = (
       <div className="option-button">
@@ -160,10 +160,10 @@ class Memo extends Component {
     const memoView = (
       <div className="card">
         <div className="info">
-          <a className="username">{data.writer}</a> wrote a log · <TimeAgo date={data.date.created}/>
-          { this.props.data.is_edited ? editedInfo : undefined }
+          <a className="username">{data.writer}</a> <TimeAgo className="memo-date" date={data.date.created}/>
           { ownership ? dropDownMenu : undefined }
         </div>
+        { this.props.data.is_edited ? editedInfo : undefined }
         <div className="card-content">
           {data.contents}
         </div>

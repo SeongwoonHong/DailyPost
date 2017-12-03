@@ -35,7 +35,7 @@ class Header extends Component {
       <nav ref={el => this.component = el } className="Header">
         <div className="nav-wrapper blue darken-1">
           <div ref={el => this.header = el}>
-            <Link to="/" className="brand-logo center header" >MEMOPAD</Link>
+            <Link to="/" className="brand-logo center header" >NOTES</Link>
           </div>
           <ul>
             <li ref={el => this.searchIcon = el }><a><i className="material-icons">search</i></a></li>

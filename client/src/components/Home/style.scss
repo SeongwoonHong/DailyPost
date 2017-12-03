@@ -1,0 +1,13 @@
+.wrapper {
+    margin-top: 20px;
+    position: relative;
+    .preloader-wrapper {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      &.active {
+        animation: initial;
+      }
+    }
+}

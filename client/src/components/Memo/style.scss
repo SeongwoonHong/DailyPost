@@ -8,6 +8,14 @@
       font-weight: bold;
       cursor: pointer;
     }
+    .memo-date {
+      font-size: 12px;
+    }
+  }
+  .edit-date {
+    font-size: 12px;
+    color: #90A4AE;
+    margin-left: 3%;
   }
   .card-content {
     word-wrap: break-word;
@@ -71,5 +79,15 @@
   }
   @keyframes BounceStar {
     to { transform: scale(1.35);}
+  }
+}
+@media screen and (max-width: 950px) {
+  .edit-date {
+    margin-left: 4% !important;
+  }
+}
+@media screen and (max-width: 450px) {
+  .edit-date {
+    margin-left: 5% !important;
   }
 }

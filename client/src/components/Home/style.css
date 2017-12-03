@@ -1,3 +1,10 @@
 .wrapper {
-    margin-top: 20px;
-}
+  margin-top: 20px;
+  position: relative; }
+  .wrapper .preloader-wrapper {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%); }
+    .wrapper .preloader-wrapper.active {
+      animation: initial; }
