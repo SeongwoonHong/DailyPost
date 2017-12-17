@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import Authentication from '../Authentication/Authentication';
 import { withRouter } from 'react-router-dom';
 import Materialize from 'materialize-css';
 import TransitionGroup from 'react-transition-group-plus';
-import $ from 'jquery';
 import './style.scss';
 
 class Register extends Component {
@@ -47,11 +45,4 @@ class Register extends Component {
     );
   }
 }
-Register.defaultProps = {
-
-};
-
-Register.propTypes = {
-
-};
 export default withRouter(Register);

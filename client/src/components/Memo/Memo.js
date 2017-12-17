@@ -5,9 +5,7 @@ import animate from 'gsap-promise';
 import TimeAgo from 'react-timeago';
 import classnames from 'classnames';
 import './style.css';
-import Materialize from 'materialize-css';
 import Button from '../Button/Button';
-import $ from 'jquery';
 
 class Memo extends Component {
   constructor(props) {
@@ -15,8 +13,33 @@ class Memo extends Component {
     this.state = {
       editMode: false,
       isDropdownOpend: false,
-      value: props.data.contents
+      value: props.data.contents,
+      isExpanded: false,
+      showExpandedButton: false
     };
+    this.scrollHeight = 0;
+    this.expandHeight = 0;
+  }
+  componentDidMount = () => {
+    this.scrollHeight = this.contentRef.scrollHeight;
+    this.expandHeight = this.contentRef.offsetHeight;
+    if (this.scrollHeight > this.expandHeight)
+    this.setState({
+      showExpandedButton: true
+    });
+  }
+  componentWillReceiveProps = (nextProps) => {
+    if (this.props.data.contents !== nextProps.data.contents) {
+      if (this.scrollHeight > this.expandHeight) {
+        this.setState({
+          showExpandedButton: true
+        });
+      } else {
+        this.setState({
+          showExpandedButton: false
+        });
+      }
+    }
   }
   shouldComponentUpdate(nextProps, nextState) {
     let current = {
@@ -32,22 +55,6 @@ class Memo extends Component {
     let update = JSON.stringify(current) !== JSON.stringify(next);
     return update;
   }
-  // componentDidMount = () => {
-  //   animate.set(this.component, { autoAlpha: 0, y: '-50px' });
-  // }
-  // componentDidUpdate = () => {
-  //   console.log('updated');
-  //   console.log(document.getElementById(`dropdown-button-${this.props.data._id}`));
-  //   // $('#dropdown-button-'+this.props.data._id).dropdown({
-  //   //   belowOrigin: true // Displays dropdown below the button
-  //   // });
-  // }
-  // componentDidMount = () => {
-  //   console.log($);
-  //   $('#dropdown-button-'+this.props.data._id).dropdown({
-  //     belowOrigin: true // Displays dropdown below the button
-  //   });
-  // }
   toggleDropdown = () => {
     if (!this.state.isDropdownOpend) {
       document.addEventListener('click', this.handleOutsideClick, false);
@@ -90,6 +97,7 @@ class Memo extends Component {
       let id = this.props.data._id;
       let index = this.props.index;
       let contents = this.state.value;
+      this.scrollHeight = this.contentRef.scrollHeight - 20;
       this.props.onEdit(id, index, contents).then(() => {
         this.setState({
           editMode: !this.state.editMode,
@@ -108,6 +116,21 @@ class Memo extends Component {
   animateOut = () => {
     return animate.to(this.component, 0.5 ,{ autoAlpha: 0, y: '-50px' });
   }
+  expand = () => {
+    // if (!this.state.isExpanded) {
+    //   this.contentRef.style.height = '500px';
+    // } else {
+    //   this.contentRef.style.height = this.height + 'px';
+    // }
+    // this.setState({ isExpanded: !this.state.isExpanded})
+    // this.setState({ isExpanded: !this.state.isExpanded });
+    if (!this.state.isExpanded) {
+      animate.to(this.contentRef, 1, { height: this.scrollHeight, overflow: 'visible' })
+    } else {
+      animate.to(this.contentRef, 0.5, { height: this.expandHeight, overflow: 'hidden' });
+    }
+    this.setState({ isExpanded: !this.state.isExpanded})
+  }
   componentWillEnter = (done) => {
     this.animateIn().then(done);
   }
@@ -121,7 +144,7 @@ class Memo extends Component {
     // let starStyle = (this.props.data.starred.indexOf(this.props.currentUser) > -1) ? { color: '#ff9980' } : {} ;
     const { data, ownership } = this.props;
     let editedInfo = (
-      <span className="edit-date" style={{color: '#AAB5BC'}}> (Edited <TimeAgo date={this.props.data.date.edited} live={true}/>)</span>
+      <span className="edit-date" style={{color: '#AAB5BC'}}> (edited)</span>
     );
     const dropDownMenu = (
       <div className="option-button">
@@ -139,7 +162,10 @@ class Memo extends Component {
     const editView = (
       <div className="write">
         <div className="card">
-          <div className="card-content">
+          <div className="info">
+            <a className="username">{data.writer}</a> <TimeAgo className="memo-date" date={data.date.created}/>
+          </div>
+          <div className="card-content" ref={el => this.contentRef = el}>
             <textarea
               className="materialize-textarea"
               value={this.state.value}
@@ -149,7 +175,7 @@ class Memo extends Component {
           <div className="card-action">
             <Button
               onClick={this.toggleEdit}
-              text="OK"
+              text="SAVE"
               className="waves-light btn"
               animateAtDidMount
             />
@@ -161,11 +187,14 @@ class Memo extends Component {
       <div className="card">
         <div className="info">
           <a className="username">{data.writer}</a> <TimeAgo className="memo-date" date={data.date.created}/>
+          { this.props.data.is_edited ? editedInfo : undefined }
           { ownership ? dropDownMenu : undefined }
         </div>
-        { this.props.data.is_edited ? editedInfo : undefined }
-        <div className="card-content">
+        <div className={classnames('card-content', {'isExpanded': this.state.isExpanded})} ref={el => this.contentRef = el}>
           {data.contents}
+          {
+            (this.state.showExpandedButton) ? <i onClick={this.expand} className="expand-button material-icons">{this.state.isExpanded ? 'remove' : 'add'}</i> : null
+          }
         </div>
         <div className="footer">
           <i
@@ -173,9 +202,11 @@ class Memo extends Component {
             // style={starStyle}
             onClick={this.handleStar}
           >
-            star
+            favorite
           </i>
           <span className="star-count">{this.props.data.starred.length}</span>
+
+
         </div>
       </div>
     );

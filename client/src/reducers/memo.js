@@ -107,7 +107,7 @@ export default function authentication(state = initialState, action) {
           error: -1,
           memo: undefined
         }
-      };;
+      };
     case types.MEMO_EDIT_SUCCESS:
       return update(state, {
         edit: {

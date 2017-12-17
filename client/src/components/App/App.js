@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import Header from '../Header';
 import Materialize from 'materialize-css';
-import $ from 'jquery';
 
 class App extends Component {
   componentDidMount = () => {
     function getCookie(name) {
       var value = '; ' + document.cookie;
       var parts = value.split('; ' + name + '=');
-      if (parts.length == 2) return parts.pop().split(';').shift();
+      if (parts.length === 2) return parts.pop().split(';').shift();
     }
 
     // get loginData from cookie
@@ -57,11 +55,4 @@ class App extends Component {
     );
   }
 }
-App.defaultProps = {
-
-};
-
-App.propTypes = {
-
-};
 export default App;

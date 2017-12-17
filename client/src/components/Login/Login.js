@@ -1,15 +1,9 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-// import Materialize from 'materialize-css';
 import Authentication from '../Authentication/Authentication';
 import { withRouter } from 'react-router-dom';
 import Materialize from 'materialize-css';
-import $ from 'jquery';
 
 class Login extends Component {
-  constructor(props) {
-    super(props);
-  }
   handleLogin = (id, pw) => {
     return this.props.loginRequest(id, pw)
       .then(() => {
@@ -43,11 +37,5 @@ class Login extends Component {
     );
   }
 }
-Login.defaultProps = {
 
-};
-
-Login.propTypes = {
-
-};
 export default withRouter(Login);

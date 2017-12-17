@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import animate from 'gsap-promise';
 import classnames from 'classnames';
+import Materialize from 'materialize-css';
 import Button from '../Button/Button';
 import './style.css';
 
@@ -30,6 +31,10 @@ class Authentication extends Component {
   handleLogin = () => {
     let id = this.state.username;
     let pw = this.state.password;
+    if (!id.trim() || !pw.trim()) {
+      Materialize.toast('<span style="color: #FFB4BA">Incorrect username or password</span>', 2000);
+      return;
+    }
     this.props.onLogin(id, pw).then(
       (success) => {
         if(!success) {
@@ -43,6 +48,10 @@ class Authentication extends Component {
   handleRegister = () => {
     let id = this.state.username;
     let pw = this.state.password;
+    if (!id.trim() || !pw.trim()) {
+      Materialize.toast('<span style="color: #FFB4BA">Incorrect username or password</span>', 2000);
+      return;
+    }
     this.props.onRegister(id, pw).then((result) => {
       if (!result) {
         this.setState({
@@ -53,7 +62,7 @@ class Authentication extends Component {
     })
   }
   handleKeyPress = (e) => {
-    if (e.charCode == 13) {
+    if (e.charCode === 13) {
       if (this.props.mode) {
         this.handleLogin();
       } else {

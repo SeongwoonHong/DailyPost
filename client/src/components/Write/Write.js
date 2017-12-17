@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import animate from 'gsap-promise';
 import Button from '../Button/Button';
 import './style.css';
@@ -61,11 +60,4 @@ class Write extends Component {
     );
   }
 }
-Write.defaultProps = {
-  onPost: (contents) => { console.error('post function not defined'); }
-};
-
-Write.propTypes = {
-  onPost: React.PropTypes.func
-};
 export default Write;

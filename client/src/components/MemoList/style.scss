@@ -1,4 +1,9 @@
 .memo-list {
+  width: 100%;
+  > div {
+    width: 90%;
+    margin: 0 auto;
+  }
   @-webkit-keyframes memo-enter {
     0% {
       opacity: 0;

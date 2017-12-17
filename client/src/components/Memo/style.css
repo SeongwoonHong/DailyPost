@@ -1,85 +1,103 @@
-.memo .info {
-  font-size: 18px;
-  padding: 20px 20px 0px 20px;
-  color: #90A4AE; }
-  .memo .info .username {
-    color: #263238;
-    font-weight: bold;
+.memo {
+  width: 33%;
+  display: inline-block; }
+  .memo .info {
+    font-size: 18px;
+    padding: 20px 20px 0px 20px;
+    color: #90A4AE; }
+    .memo .info .username {
+      color: #263238;
+      font-weight: bold;
+      cursor: pointer; }
+    .memo .info .memo-date {
+      font-size: 12px; }
+  .memo .edit-date {
+    font-size: 12px;
+    color: #90A4AE;
+    margin-left: 3%; }
+  .memo .card-content {
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    height: 10rem;
+    overflow: hidden;
+    position: relative; }
+  .memo .icon-button {
+    color: #9e9e9e;
     cursor: pointer; }
-  .memo .info .memo-date {
-    font-size: 12px; }
-
-.memo .edit-date {
-  font-size: 12px;
-  color: #90A4AE;
-  margin-left: 3%; }
-
-.memo .card-content {
-  word-wrap: break-word;
-  white-space: pre-wrap; }
-
-.memo .icon-button {
-  color: #9e9e9e;
-  cursor: pointer; }
-  .memo .icon-button:hover {
-    color: #C5C5C5; }
-  .memo .icon-button:active {
-    color: #ff9800; }
-
-.memo .option-button {
-  position: absolute;
-  right: 20px;
-  top: 20px; }
-
-.memo .card-content {
-  font-size: 18px; }
-
-.memo .footer {
-  border-top: 1px solid #ECECEC;
-  height: 45px; }
-
-.memo .star {
-  position: relative;
-  left: 15px;
-  top: 11px; }
-  .memo .star:hover {
-    color: #C5C5C5;
-    animation: BounceStar ease-out 0.5s infinite alternate; }
-
-.memo .star-count {
-  position: relative;
-  left: 20px;
-  top: 4px;
-  font-size: 13px;
-  font-weight: bold;
-  color: #777; }
-
-.memo .starred {
-  animation: starred ease-out 0.6s 1 forwards; }
-  .memo .starred:hover {
-    color: #ff9980;
-    animation: BounceStar ease-out 0.5s infinite alternate; }
-
-.memo .isDropdownOpend {
-  display: block;
-  opacity: 1; }
+    .memo .icon-button:hover {
+      color: #C5C5C5; }
+    .memo .icon-button:active {
+      color: #ff9800; }
+  .memo .option-button {
+    position: absolute;
+    right: 8px;
+    top: 22px; }
+  .memo .card-content {
+    font-size: 18px; }
+  .memo .expand-button {
+    cursor: pointer;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: #8e44ad; }
+    .memo .expand-button:hover {
+      animation: expandAnimation ease-out 0.5s forwards; }
+  .memo .footer {
+    border-top: 1px solid #ECECEC;
+    height: 45px;
+    position: relative; }
+    .memo .footer .edit-date {
+      font-size: 12px;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 5px; }
+  .memo .star {
+    position: relative;
+    left: 15px;
+    top: 11px; }
+    .memo .star:hover {
+      color: #C5C5C5;
+      animation: BounceStar ease-out 0.5s infinite alternate; }
+  .memo .star-count {
+    position: relative;
+    left: 20px;
+    top: 4px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #777; }
+  .memo .starred {
+    animation: starred ease-out 0.6s 1 forwards; }
+    .memo .starred:hover {
+      color: #e74c3c;
+      animation: BounceStar ease-out 0.5s infinite alternate; }
+  .memo .isDropdownOpend {
+    display: block;
+    opacity: 1; }
 
 @keyframes starred {
   to {
-    color: #ff9980; } }
+    color: #e74c3c; } }
 
 @keyframes BounceStar {
   to {
     transform: scale(1.35); } }
 
-@keyframes BounceStar {
+@keyframes expandAnimation {
   to {
-    transform: scale(1.35); } }
+    color: #e74c3c; } }
 
 @media screen and (max-width: 950px) {
   .edit-date {
     margin-left: 4% !important; } }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 800px) {
+  .memo {
+    width: 100%; }
+    .memo .card-content {
+      height: initial;
+      overflow: initial; }
   .edit-date {
-    margin-left: 5% !important; } }
+    margin-left: initial !important; }
+  .expand-button {
+    display: none; } }

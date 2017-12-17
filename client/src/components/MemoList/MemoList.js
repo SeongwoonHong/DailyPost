@@ -16,6 +16,7 @@ class MemoList extends Component {
           transitionName="memo"
           transitionEnterTimeout={2000}
           transitionLeaveTimeout={1000}
+          component="div"
         >
           {
             this.props.data.map((memo, i) => {

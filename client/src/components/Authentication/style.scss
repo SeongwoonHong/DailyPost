@@ -52,6 +52,9 @@
   }
   .register-close {
     cursor: pointer;
+    &:hover {
+      animation: BounceClose ease-out 0.3s infinite alternate;
+    }
   }
 }
 
@@ -65,4 +68,7 @@
   .logo {
     font-size: 60px;
   }
+}
+@keyframes BounceClose {
+  to { transform: scale(1.35);}
 }

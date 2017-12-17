@@ -35,9 +35,15 @@
       color: #5B5B5B; }
   .auth .register-close {
     cursor: pointer; }
+    .auth .register-close:hover {
+      animation: BounceClose ease-out 0.3s infinite alternate; }
 
 @media screen and (max-width: 480px) {
   .auth .card {
     width: 100%; }
   .logo {
     font-size: 60px; } }
+
+@keyframes BounceClose {
+  to {
+    transform: scale(1.35); } }

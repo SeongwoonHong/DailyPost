@@ -1,3 +1,9 @@
+.memo-list {
+  width: 100%; }
+  .memo-list > div {
+    width: 90%;
+    margin: 0 auto; }
+
 @-webkit-keyframes memo-enter {
   0% {
     opacity: 0; }
@@ -11,10 +17,9 @@
   100% {
     opacity: 1;
     transform: translateX(0%); } }
-
-.memo-list .memo-enter {
-  -webkit-animation: memo-enter 2s;
-  animation: memo-enter 2s; }
+  .memo-list .memo-enter {
+    -webkit-animation: memo-enter 2s;
+    animation: memo-enter 2s; }
 
 @-webkit-keyframes memo-leave {
   0% {
@@ -35,11 +40,10 @@
     transform: translateX(100px); }
   100% {
     max-height: 0px; } }
-
-.memo-list .memo-leave {
-  max-height: 0px;
-  opacity: 0;
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
-  -webkit-animation-name: memo-leave;
-  animation-name: memo-leave; }
+  .memo-list .memo-leave {
+    max-height: 0px;
+    opacity: 0;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-name: memo-leave;
+    animation-name: memo-leave; }

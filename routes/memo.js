@@ -195,7 +195,7 @@ router.delete('/:id', (req, res) => {
 router.get('/', (req, res) => {
   Memo.find()
     .sort({ "_id": -1 })
-    .limit(6)
+    .limit(9)
     .exec((err, memos) => {
       if (err) throw err;
       res.json(memos);

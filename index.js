@@ -14,7 +14,7 @@ const api = require('./routes');
 if (process.env.NODE_ENV === 'production') {
   setInterval(function() {
     http.get('http://shielded-atoll-48252.herokuapp.com/');
-  }, 1500000);
+  }, 1800000);
 }
 mongoose.connect(keys.mongoURI, { useMongoClient: true });
 const db = mongoose.connection;
