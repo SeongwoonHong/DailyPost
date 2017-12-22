@@ -1,7 +1,11 @@
-#app-container {
-    width: 100vw;
-    height: 100vh;
-    background-image: url('../../../assets/images/keyboard-background.jpg');
-    background-size: cover;
-    font-family: Raleway;
+.header-wrapper {
+  z-index: 9999;
+}
+
+@media screen and (max-width: 550px) {
+  #toast-container {
+      position: absolute !important;
+      top: 0px !important;
+      left: 0px !important;
+  }
 }

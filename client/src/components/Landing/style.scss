@@ -1,0 +1,107 @@
+#landing {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background:
+  linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
+  linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+  linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+  linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+  linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+  linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+  background-color: #131313;
+  background-size: 20px 20px;
+  position: relative;
+  .bg-video {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  .main {
+    .main-header {
+      // width: 80%;
+      margin: 0 auto;
+      margin-top: 380px;
+      position: relative;
+      top: 50%;
+    	font-size: 30px;
+    	line-height: 1.5;
+    	transform: translateY(-50%);
+      perspective: 400px;
+      .txt {
+        display: inline-block;
+        min-width: 10px;
+      }
+      .title {
+        margin: 10px 0 10px 0;
+        font-size: 50px;
+        letter-spacing: -1px;
+        font-weight: 700;
+        font-family: "Open Sans", sans-serif;
+        color: #fff;
+        text-shadow: 2px 2px #000;
+        text-align: center;
+      }
+      .description, .description2 {
+        margin: 0;
+        font-size: 30px;
+        line-height: 1.5em;
+        font-weight: 400;
+        font-family: "Merriweather", serif;
+        letter-spacing: 0.01rem;
+        color: rgba(255,255,255,0.8);
+        text-align: center;
+      }
+      .description2 {
+        margin-top: 180px;
+      }
+    }
+  }
+  .main-arrow-wrapper {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 20px;
+    color: rgba(255,255,255,0.8);
+    .arrow-down {
+      cursor: pointer;
+      animation: arrow-movement 1s ease-in-out infinite;
+    }
+  }
+}
+@keyframes arrow-movement {
+  0% {
+    opacity: 0;
+    top: 45%;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@media only screen and (min-width: 601px) {
+  .container {
+    width: 100% !important;
+  }
+}
+@media screen and (max-width: 550px) {
+  .title {
+    font-size: 33px !important;
+  }
+  .description, .description2 {
+    font-size: 16px !important;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .title {
+    font-size: 25px !important;
+  }
+  .description, .description2 {
+    font-size: 13px !important;
+  }
+}

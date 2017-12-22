@@ -1,6 +1,28 @@
-.Header .header:hover {
-  animation: textHover ease-out 1s 1 forwards; }
+.header {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -20%); }
+  .header .login-button {
+    background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+    border: 0;
+    color: #fff;
+    padding: 10px;
+    font-size: 20px;
+    width: 330px;
+    margin: 20px auto;
+    display: inline-block;
+    cursor: pointer; }
+    .header .login-button:active {
+      outline: none; }
+    .header .login-button:hover {
+      animation: Bounce ease-out 0.3s infinite alternate; }
 
-@keyframes textHover {
+@keyframes Bounce {
   to {
-    color: #333; } }
+    transform: scale(1.05); } }
+
+@media screen and (max-width: 550px) {
+  .login-button {
+    width: 130px !important;
+    font-size: 10px !important; } }

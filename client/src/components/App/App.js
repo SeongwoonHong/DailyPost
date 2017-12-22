@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../Header';
 import Materialize from 'materialize-css';
+import './style.css';
 
 class App extends Component {
   componentDidMount = () => {
@@ -35,7 +36,7 @@ class App extends Component {
   }
   handleLogout = () => {
     this.props.logoutRequest().then(() => {
-      Materialize.toast('Good Bye!', 2000);
+      Materialize.toast('Good Bye. See you later!', 6000, 'rounded');
 
       // empties the session
       let loginData = {
@@ -49,9 +50,9 @@ class App extends Component {
     // let re = /(login|register)/;
     // let isAuth = re.test(this.props.location.pathname);
     return (
-      <div>
+      <span className="header-wrapper">
         <Header isLoggedIn={this.props.status.isLoggedIn} onLogout={this.handleLogout} />
-      </div>
+      </span>
     );
   }
 }

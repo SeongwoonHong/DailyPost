@@ -1,12 +1,33 @@
-.Header {
-  .header {
+.header {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -20%);
+  .login-button {
+    background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+    border: 0;
+    color: #fff;
+    padding: 10px;
+    font-size: 20px;
+    width: 330px;
+    margin: 20px auto;
+    display: inline-block;
+    cursor: pointer;
+    &:active {
+      outline: none;
+    }
     &:hover {
-      animation: textHover ease-out 1s 1 forwards;
+      animation: Bounce ease-out 0.3s infinite alternate;
     }
   }
-  @keyframes textHover {
-    to {
-      color: #333;
-    }
+  @keyframes Bounce {
+    to { transform: scale(1.05);}
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .login-button {
+    width: 130px !important;
+    font-size: 10px !important;
   }
 }

@@ -1,6 +1,7 @@
 .memo {
-  width: 33%;
-  display: inline-block; }
+  width: 31%;
+  display: inline-block;
+  margin: 2px; }
   .memo .info {
     font-size: 18px;
     padding: 20px 20px 0px 20px;

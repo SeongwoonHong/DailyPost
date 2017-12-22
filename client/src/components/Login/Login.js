@@ -16,11 +16,11 @@ class Login extends Component {
 
           document.cookie = 'key=' + btoa(JSON.stringify(loginData));
 
-          Materialize.toast('Welcome, ' + id + '!', 2000);
+          Materialize.toast('Welcome, ' + id + '!\n try leave a comment!', 6000, 'rounded');
           this.props.history.push('/');
           return true;
         } else {
-          Materialize.toast('<span style="color: #FFB4BA">Incorrect username or password</span>', 2000);
+          Materialize.toast('<span style="color: #FFB4BA">Incorrect username or password</span>', 2000, 'rounded');
           return false;
         }
       })

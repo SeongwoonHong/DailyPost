@@ -11,6 +11,7 @@ import Home from './components/Home';
 import Login from './components/Login';
 import App from './components/App';
 import Register from './components/Register';
+import Landing from './components/Landing';
 // import ReactMaterialize from 'react-materialize';
 // const Materialize = window.Materialize;
 const store = createStore(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), applyMiddleware(thunk));
@@ -18,13 +19,14 @@ const store = createStore(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && windo
 render(
     <Provider store={store}>
       <BrowserRouter>
-        <div className="container">
+        <div>
           {/* <Route path="/" component={App} /> */}
-          <Route path="/" component={App} />
+          {/* <Route path="/" component={App} /> */}
           <Switch>
-            <Route exact path="/" component={Home} />
+            <Route exact path="/" component={Landing} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
+            <Route path="/landing" component={Landing} />
             <Redirect from="*" exact to="/" />
           </Switch>
         </div>

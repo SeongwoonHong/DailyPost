@@ -211,7 +211,7 @@ class Memo extends Component {
       </div>
     );
     return(
-      <div className="container memo" ref={el => this.component = el}>
+      <div className="memo" ref={el => this.component = el}>
        { this.state.editMode ? editView : memoView }
      </div>
     );

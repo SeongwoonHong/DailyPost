@@ -37,7 +37,7 @@ class Write extends Component {
   }
   render() {
     return (
-      <div className="container write" ref={el => this.component = el}>
+      <div className="write" ref={el => this.component = el}>
         <div className="card">
           <div className="card-content">
             <textarea

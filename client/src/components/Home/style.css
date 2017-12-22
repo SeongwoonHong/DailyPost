@@ -3,7 +3,7 @@
   position: relative; }
   .wrapper .preloader-wrapper {
     position: absolute;
-    top: 0;
+    top: 10%;
     left: 50%;
     transform: translateX(-50%); }
     .wrapper .preloader-wrapper.active {

@@ -148,7 +148,7 @@ class Authentication extends Component {
     return (
       <div className="container auth" ref={el => this.component = el}>
         <div className="card">
-          <div className="header blue white-text center">
+          <div className="auth-header blue white-text center">
             <div className="card-content teal">
               {
                 !this.props.mode && <i

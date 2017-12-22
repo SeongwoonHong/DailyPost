@@ -36,7 +36,7 @@ class Home extends Component {
     })
     $(window).scroll(() => {
       // WHEN HEIGHT UNDER SCROLLBOTTOM IS LESS THEN 350
-      if ($(document).height() - $(window).height() - $(window).scrollTop() < 250) {
+      if ($(document).height() - $(window).height() - $(window).scrollTop() < 350) {
           if (!this.state.loadingState) {
             this.loadOldMemo();
             this.setState({
@@ -79,7 +79,6 @@ class Home extends Component {
     return this.props.memoListRequest(false, 'old', lastId).then(() => {
       if (this.props.isLast) {
         // Materialize.toast('You are reading the last page', 2000);
-        console.log('last memo is loaded');
       }
     });
   }

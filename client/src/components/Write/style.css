@@ -1,7 +1,9 @@
-.write .current-user {
-  font-weight: bold; }
-
-.write .card .card-action {
-  display: flex;
-  justify-content: space-between;
-  align-items: center; }
+.write {
+  width: 33%;
+  margin: 0 auto; }
+  .write .current-user {
+    font-weight: bold; }
+  .write .card .card-action {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; }
