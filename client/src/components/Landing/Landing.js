@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import animate from 'gsap-promise';
 import App from '../App';
 import Home from '../Home';
@@ -25,7 +24,7 @@ class Landing extends Component {
   floatingAnimation = () => {
     const ref = [...document.querySelectorAll('div.txt')];
     ref.map((txt, i) => {
-      animate.from(txt, 4, {
+      return animate.from(txt, 4, {
         opacity: 0,
         x: this.random(-500, 500),
         y: this.random(-500, 500),
@@ -76,11 +75,5 @@ class Landing extends Component {
     );
   }
 }
-Landing.defaultProps = {
 
-};
-
-Landing.propTypes = {
-
-};
 export default Landing;

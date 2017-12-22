@@ -1,6 +1,5 @@
 import Landing from './Landing';
 import { connect } from 'react-redux';
-import * as actions from '../../actions/memo';
 
 const mapStateToProps = (state) => {
   return {
