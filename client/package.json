@@ -1,10 +1,6 @@
 {
   "name": "seongwoonhong",
   "version": "0.1.0",
-  "engines": {
-    "node": "8.6.0",
-    "npm": "5.3.0"
-  },
   "private": true,
   "devDependencies": {},
   "dependencies": {
