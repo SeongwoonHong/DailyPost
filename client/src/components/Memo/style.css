@@ -101,4 +101,6 @@
   .edit-date {
     margin-left: initial !important; }
   .expand-button {
-    display: none; } }
+    display: none; }
+  .isDropdownOpend {
+    left: -1000% !important; } }

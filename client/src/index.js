@@ -15,6 +15,12 @@ import Landing from './components/Landing';
 // import ReactMaterialize from 'react-materialize';
 // const Materialize = window.Materialize;
 const store = createStore(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), applyMiddleware(thunk));
+const isDevelopment = process.env.NODE_ENV === 'development';
+
+let TestRoutes;
+if (isDevelopment) {
+  TestRoutes = require('./test/routes').default;
+}
 
 render(
     <Provider store={store}>
@@ -23,6 +29,11 @@ render(
           {/* <Route path="/" component={App} /> */}
           {/* <Route path="/" component={App} /> */}
           <Switch>
+            {
+              isDevelopment
+                ? <Route path="/test" component={ TestRoutes } />
+                : null
+            }
             <Route exact path="/" component={Landing} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />

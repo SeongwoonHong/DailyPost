@@ -7,3 +7,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center; }
+  @media screen and (max-width: 900px) {
+    .write {
+      width: 310px; } }
