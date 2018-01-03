@@ -44,7 +44,7 @@ class Write extends Component {
               className="materialize-textarea"
               value={this.state.contents}
               onChange={this.handleChange}
-              placeholder="Write down your note!"></textarea>
+              placeholder="Leave a comment!"></textarea>
           </div>
           <div className="card-action">
             <span style={{'float': 'left'}}>User Name: <span className="current-user">{ this.props.currentUser }</span></span>

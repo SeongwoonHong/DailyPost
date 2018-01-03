@@ -160,7 +160,7 @@ class Memo extends Component {
       </div>
     );
     const editView = (
-      <div className="write">
+      <div className="write edit-write">
         <div className="card">
           <div className="info">
             <a className="username">{data.writer}</a> <TimeAgo className="memo-date" date={data.date.created}/>

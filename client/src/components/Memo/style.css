@@ -12,6 +12,8 @@
       cursor: pointer; }
     .memo .info .memo-date {
       font-size: 12px; }
+  .memo .edit-write {
+    width: 100%; }
   .memo .edit-date {
     font-size: 12px;
     color: #90A4AE;
