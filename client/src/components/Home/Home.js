@@ -4,6 +4,7 @@ import Write from '../Write/Write';
 import App from '../App';
 import MemoList from '../MemoList/MemoList';
 import './style.css';
+import { mobilecheck } from '../../utils/mobilecheck';
 import Materialize from 'materialize-css';
 import $ from 'jquery';
 import TransitionGroup from 'react-transition-group-plus';
@@ -34,9 +35,10 @@ class Home extends Component {
       loadUntilScrollable();
       loadMemoLoop();
     })
+    const offset = mobilecheck() ? 950 : 350;
     $(window).scroll(() => {
       // WHEN HEIGHT UNDER SCROLLBOTTOM IS LESS THEN 350
-      if ($(document).height() - $(window).height() - $(window).scrollTop() < 350) {
+      if ($(document).height() - $(window).height() - $(window).scrollTop() < offset) {
           if (!this.state.loadingState) {
             this.loadOldMemo();
             this.setState({
