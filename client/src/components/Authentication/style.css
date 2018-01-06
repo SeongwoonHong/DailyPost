@@ -18,6 +18,18 @@
     margin: 0 auto; }
   .auth .auth-header {
     font-size: 18px; }
+    .auth .auth-header .card-content {
+      display: flex;
+      justify-content: space-between; }
+      .auth .auth-header .card-content.login {
+        text-align: initial; }
+        .auth .auth-header .card-content.login {
+          display: block;
+          justify-content: initial; }
+        .auth .auth-header .card-content.login > span {
+          margin-left: 35%; }
+    .auth .auth-header .home {
+      color: #fff; }
   .auth .row {
     margin-bottom: 0px; }
   .auth .username {

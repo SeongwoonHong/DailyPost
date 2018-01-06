@@ -21,6 +21,23 @@
 
   .auth-header {
     font-size: 18px;
+    .card-content {
+      display: flex;
+      justify-content: space-between;
+      &.login {
+        text-align: initial;
+        & {
+          display: block;
+          justify-content: initial;
+        }
+        > span {
+          margin-left: 35%;
+        }
+      }
+    }
+    .home {
+      color: #fff;
+    }
   }
 
   .row {

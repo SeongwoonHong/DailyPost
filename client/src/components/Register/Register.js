@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Authentication from '../Authentication/Authentication';
+import Authentication from '../Authentication';
 import { withRouter } from 'react-router-dom';
 import Materialize from 'materialize-css';
 import TransitionGroup from 'react-transition-group-plus';

@@ -1,22 +1,17 @@
-.header {
-  position: absolute;
-  top: 450px;
-  left: 50%;
-  transform: translate(-50%, -20%); }
-  .header .login-button {
-    background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
-    border: 0;
-    color: #fff;
-    padding: 10px;
-    font-size: 20px;
-    width: 330px;
-    margin: 20px auto;
-    display: inline-block;
-    cursor: pointer; }
-    .header .login-button:active {
-      outline: none; }
-    .header .login-button:hover {
-      animation: Bounce ease-out 0.3s infinite alternate; }
+.header .login-button {
+  background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+  border: 0;
+  color: #fff;
+  padding: 10px;
+  font-size: 20px;
+  width: 330px;
+  margin: 20px auto;
+  display: inline-block;
+  cursor: pointer; }
+  .header .login-button:active {
+    outline: none; }
+  .header .login-button:hover {
+    animation: Bounce ease-out 0.3s infinite alternate; }
 
 @keyframes Bounce {
   to {

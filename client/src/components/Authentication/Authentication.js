@@ -149,17 +149,18 @@ class Authentication extends Component {
       <div className="container auth" ref={el => this.component = el}>
         <div className="card">
           <div className="auth-header blue white-text center">
-            <div className="card-content teal">
+            <div className={classnames('card-content teal', { login: this.props.mode })}>
+              <Link to="/"><i className="material-icons home">home</i></Link>
+              {
+                this.props.mode ? <span>LOGIN</span> : <span>REGISTER</span>
+              }
               {
                 !this.props.mode && <i
-                  className="material-icons prefix right register-close"
+                  className="material-icons register-close"
                   onKeyDown={() => {}}
                   onClick={this.cancelHandler}>
                   cancel
                 </i>
-              }
-              {
-                this.props.mode ? "LOGIN" : "REGISTER"
               }
             </div>
           </div>

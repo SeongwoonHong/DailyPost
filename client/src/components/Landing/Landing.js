@@ -42,35 +42,36 @@ class Landing extends Component {
     });
   }
   arrowScrollDown = () => {
-    const offset = document.getElementById('root').offsetHeight;
+    const offset = document.getElementById('landing').offsetHeight;
     animate.to(window, 1, { scrollTo: { y: offset, autoKill: true }});
     this.setState({ isScrolled: true });
   }
   render() {
 
     return (
-      <div id="landing">
-        <App />
-        <div className="main">
-          <div className="main-header">
-            <div className="title">{this.getSpanText(this.state.title)}</div>
-            <div className="description">{this.getSpanText(this.state.description)}</div>
-            <div className="description2">{this.getSpanText(this.state.description2)}</div>
+      <div id="landing-container">
+        <div id="landing">
+          <div className="main">
+            <div className="main-header">
+              <div className="title">{this.getSpanText(this.state.title)}</div>
+              <div className="description">{this.getSpanText(this.state.description)}</div>
+              <App />
+              <div className="description2">{this.getSpanText(this.state.description2)}</div>
+              <div className="main-arrow-wrapper">
+                <i
+                  className="material-icons arrow-down"
+                  onClick={this.arrowScrollDown}
+                  ref={el => this.arrowButton = el}
+                >
+                  arrow_downward
+                </i>
+              </div>
+            </div>
           </div>
-        </div>
-        <div className="main-arrow-wrapper">
-          <i
-            className="material-icons arrow-down"
-            onClick={this.arrowScrollDown}
-            ref={el => this.arrowButton = el}
-          >
-            arrow_downward
-          </i>
         </div>
         <div className="home-wrapper">
           <Home />
         </div>
-
       </div>
     );
   }

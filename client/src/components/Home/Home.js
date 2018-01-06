@@ -17,7 +17,7 @@ class Home extends Component {
   }
   componentDidMount = () => {
     const loadUntilScrollable = () => {
-      if ($('body').height() < $(window).height()) {
+      if ($('body').height() <= $(window).height()) {
         this.loadOldMemo().then(() => {
           if (!this.props.isLast) {
             loadUntilScrollable();
@@ -115,6 +115,12 @@ class Home extends Component {
       );
     }
   handlePost = (contents) => {
+    if (!contents) {
+      return new Promise((resolve) => {
+        Materialize.toast('<span style="color: #FFB4BA">Content is required</span>', 4000, 'rounded');
+        return resolve();
+      })
+    }
     return this.props.memoPostRequest(contents).then(() => {
       if (this.props.postStatus.status === 'SUCCESS') {
         this.loadNewMemo().then(() => {

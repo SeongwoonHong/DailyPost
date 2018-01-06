@@ -12,6 +12,7 @@ import Login from './components/Login';
 // import App from './components/App';
 import Register from './components/Register';
 import Landing from './components/Landing';
+import './index.css';
 // import ReactMaterialize from 'react-materialize';
 // const Materialize = window.Materialize;
 const store = createStore(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), applyMiddleware(thunk));

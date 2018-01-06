@@ -21,7 +21,6 @@ class App extends Component {
     // page refreshed & has a session in cookie
     // check whether this cookie is valid or not
     this.props.getStatusRequest().then(() => {
-      console.log(this.props.status);
       // if session is not valid
       if (!this.props.status.valid) {
         // logout the session
@@ -50,9 +49,9 @@ class App extends Component {
     // let re = /(login|register)/;
     // let isAuth = re.test(this.props.location.pathname);
     return (
-      <span className="header-wrapper">
+      <p className="header-wrapper">
         <Header isLoggedIn={this.props.status.isLoggedIn} onLogout={this.handleLogout} />
-      </span>
+      </p>
     );
   }
 }
