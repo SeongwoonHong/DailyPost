@@ -30,6 +30,8 @@
           margin-left: 35%; }
     .auth .auth-header .home {
       color: #fff; }
+      .auth .auth-header .home:hover {
+        animation: BounceClose ease-out 0.5s infinite alternate; }
   .auth .row {
     margin-bottom: 0px; }
   .auth .username {

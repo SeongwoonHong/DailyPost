@@ -8,6 +8,7 @@ class Button extends Component {
   componentDidMount = () => {
     if (this.props.animateAtDidMount) {
       const animateText = [...this.component.querySelectorAll('.animate-text')];
+      animate.from(this.component, 0.5, { width: '40%' });
       animate.set(animateText, { autoAlpha: 0 }).then(() => {
         animate.staggerTo(animateText, 1, { autoAlpha: 1, delay: this.props.delay }, 0.05);
       });

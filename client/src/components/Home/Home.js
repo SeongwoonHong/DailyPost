@@ -138,7 +138,7 @@ class Home extends Component {
         // let $toastContent;
         switch (this.props.postStatus.error) {
           case 1:
-            // $toastContent = $('<span style="color: #FFB4BA">You are not logged in</span>');
+            $toastContent = $('<span style="color: #FFB4BA">You are not logged in</span>');
             Materialize.toast($toastContent, 2000);
             setTimeout(()=> {location.reload(false);}, 2000);
             break;
@@ -239,7 +239,7 @@ class Home extends Component {
           ? preloader : null
         }
         <TransitionGroup>
-          { this.props.isLoggedIn ? <Write onPost={this.handlePost} currentUser={this.props.currentUser} /> : undefined }
+          <Write onPost={this.handlePost} currentUser={this.props.currentUser} />
         </TransitionGroup>
         <MemoList
           data={this.props.memoData}

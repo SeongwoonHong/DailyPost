@@ -37,6 +37,9 @@
     }
     .home {
       color: #fff;
+      &:hover {
+        animation: BounceClose ease-out 0.5s infinite alternate;
+      }
     }
   }
 

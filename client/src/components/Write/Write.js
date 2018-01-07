@@ -38,6 +38,14 @@ class Write extends Component {
   render() {
     return (
       <div className="write" ref={el => this.component = el}>
+        {
+          !this.props.currentUser &&
+          <div className="background-overlay">
+            <div className="login-required">
+              Login is required
+            </div>
+          </div>
+        }
         <div className="card">
           <div className="card-content">
             <textarea

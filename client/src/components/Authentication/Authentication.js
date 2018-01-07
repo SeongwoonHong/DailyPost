@@ -17,6 +17,7 @@ class Authentication extends Component {
   }
   componentDidMount = () => {
     animate.set(this.component, { autoAlpha: 0, y: '-50px' });
+    animate.from(this.home, 0.5, { rotation: '360deg' });
     this.animateIn();
   }
   animateIn = () => {
@@ -150,7 +151,7 @@ class Authentication extends Component {
         <div className="card">
           <div className="auth-header blue white-text center">
             <div className={classnames('card-content teal', { login: this.props.mode })}>
-              <Link to="/"><i className="material-icons home">home</i></Link>
+              <Link to="/"><i className="material-icons home" ref={el => this.home = el}>home</i></Link>
               {
                 this.props.mode ? <span>LOGIN</span> : <span>REGISTER</span>
               }

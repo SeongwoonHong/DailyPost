@@ -1,17 +1,19 @@
-.header .login-button {
-  background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
-  border: 0;
-  color: #fff;
-  padding: 10px;
-  font-size: 20px;
-  width: 330px;
-  margin: 20px auto;
-  display: inline-block;
-  cursor: pointer; }
-  .header .login-button:active {
-    outline: none; }
-  .header .login-button:hover {
-    animation: Bounce ease-out 0.3s infinite alternate; }
+.header {
+  margin-right: 5px; }
+  .header .login-button {
+    background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+    border: 0;
+    color: #fff;
+    padding: 10px;
+    font-size: 20px;
+    width: 330px;
+    margin: 20px auto;
+    display: inline-block;
+    cursor: pointer; }
+    .header .login-button:active {
+      outline: none; }
+    .header .login-button:hover {
+      animation: Bounce ease-out 0.3s infinite alternate; }
 
 @keyframes Bounce {
   to {
@@ -20,4 +22,4 @@
 @media screen and (max-width: 550px) {
   .login-button {
     width: 130px !important;
-    font-size: 15px !important; } }
+    font-size: 10px !important; } }

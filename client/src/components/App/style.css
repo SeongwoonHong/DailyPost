@@ -1,7 +1,6 @@
 .header-wrapper {
   z-index: 9999;
 }
-
 @media screen and (max-width: 550px) {
   #toast-container {
       position: absolute !important;

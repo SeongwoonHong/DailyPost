@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import animate from 'gsap-promise';
+import { Link } from 'react-router-dom';
 import App from '../App';
 import Home from '../Home';
 import './style.css';

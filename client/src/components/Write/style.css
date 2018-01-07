@@ -1,12 +1,38 @@
 .write {
   width: 33%;
-  margin: 0 auto; }
+  margin: 0 auto;
+  position: relative; }
   .write .current-user {
     font-weight: bold; }
   .write .card .card-action {
     display: flex;
     justify-content: space-between;
     align-items: center; }
+  .write .background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(50, 50, 50, 0.7);
+    width: 100%;
+    height: 100%;
+    z-index: 2; }
+    .write .background-overlay .login-required {
+      text-align: center;
+      font-size: 25px;
+      width: 100%;
+      color: #fff;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      animation: flickering ease-out 0.5s infinite alternate; }
   @media screen and (max-width: 900px) {
     .write {
       width: 310px; } }
+
+@keyframes flickering {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
