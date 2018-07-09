@@ -117,13 +117,6 @@ class Memo extends Component {
     return animate.to(this.component, 0.5 ,{ autoAlpha: 0, y: '-50px' });
   }
   expand = () => {
-    // if (!this.state.isExpanded) {
-    //   this.contentRef.style.height = '500px';
-    // } else {
-    //   this.contentRef.style.height = this.height + 'px';
-    // }
-    // this.setState({ isExpanded: !this.state.isExpanded})
-    // this.setState({ isExpanded: !this.state.isExpanded });
     if (!this.state.isExpanded) {
       animate.to(this.contentRef, 1, { height: this.scrollHeight, overflow: 'visible' })
     } else {
@@ -141,7 +134,6 @@ class Memo extends Component {
     this.animateOut().then(done);
   }
   render() {
-    // let starStyle = (this.props.data.starred.indexOf(this.props.currentUser) > -1) ? { color: '#ff9980' } : {} ;
     const { data, ownership } = this.props;
     let editedInfo = (
       <span className="edit-date" style={{color: '#AAB5BC'}}> (edited)</span>
@@ -199,7 +191,6 @@ class Memo extends Component {
         <div className="footer">
           <i
             className={classnames('material-icons log-footer-icon star icon-button', { starred: this.props.data.starred.indexOf(this.props.currentUser) > -1 })}
-            // style={starStyle}
             onClick={this.handleStar}
           >
             favorite

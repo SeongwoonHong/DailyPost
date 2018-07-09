@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import TransitionGroup from 'react-transition-group-plus';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import Memo from '../Memo/Memo';
 import './style.css';

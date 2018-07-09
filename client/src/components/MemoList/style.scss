@@ -7,23 +7,19 @@
   @-webkit-keyframes memo-enter {
     0% {
       opacity: 0;
-      // max-height: 0%;
     }
     100% {
       opacity: 1;
-      // max-height: 1080px;
     }
   }
   @keyframes memo-enter {
     0% {
       opacity: 0;
       transform: translateX(-20%);
-      // max-height: 0px;
     }
     100% {
       opacity: 1;
       transform: translateX(0%);
-      // max-height: 1080px;
     }
   }
   .memo-enter {
